@@ -6,31 +6,29 @@
   <title>Mike Darling — Editorial Leader & Content Strategist</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inconsolata:wght@300;400&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --ink: #0f0f0f;
-      --ink-light: #3a3a3a;
-      --ink-faint: #888;
-      --paper: #f7f4ef;
-      --paper-dark: #ede9e2;
-      --rule: #d4cfc6;
-      --accent: #b5380a;
-      --col-width: 680px;
+      --bg: #111110;
+      --bg2: #181816;
+      --fg: #e8e4dc;
+      --fg-dim: #8a8680;
+      --fg-faint: #4a4844;
+      --accent: #c8a97e;
+      --rule: #2a2926;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--paper);
-      color: var(--ink);
-      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Inconsolata', monospace;
       font-weight: 300;
+      font-size: 15px;
       line-height: 1.7;
-      font-size: 17px;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -42,324 +40,280 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 24px 48px;
-      background: var(--paper);
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.3s;
+      padding: 32px 48px;
     }
-    nav.scrolled { border-color: var(--rule); }
 
-    .nav-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: 0.01em;
+    .nav-logo {
+      font-family: 'Cormorant', serif;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: var(--fg-dim);
       text-decoration: none;
-      color: var(--ink);
       opacity: 0;
-      transform: translateY(-4px);
-      transition: opacity 0.4s, transform 0.4s;
+      transition: opacity 0.4s, color 0.2s;
     }
-    nav.scrolled .nav-name { opacity: 1; transform: translateY(0); }
+    nav.scrolled .nav-logo { opacity: 1; }
+    .nav-logo:hover { color: var(--fg); }
 
     .nav-links {
       display: flex;
-      gap: 36px;
+      gap: 40px;
       list-style: none;
     }
     .nav-links a {
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 0.12em;
+      font-size: 11px;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       text-decoration: none;
-      color: var(--ink-light);
+      color: var(--fg-faint);
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--accent); }
 
     /* ── HERO ── */
     .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 0 48px 72px;
-      position: relative;
+      padding: 180px 48px 100px;
+      border-bottom: 1px solid var(--rule);
       opacity: 0;
-      animation: fadeUp 0.9s ease 0.1s forwards;
+      animation: fadeIn 1s ease 0.1s forwards;
     }
 
-    .hero-issue {
+    .hero-eyebrow {
       font-size: 11px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--ink-faint);
-      margin-bottom: 28px;
-    }
-    .hero-issue span {
-      display: inline-block;
-      width: 24px;
-      height: 1px;
-      background: var(--ink-faint);
-      vertical-align: middle;
-      margin-right: 12px;
+      color: var(--fg-faint);
+      margin-bottom: 48px;
     }
 
     h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(64px, 10vw, 128px);
-      font-weight: 900;
-      line-height: 0.92;
+      font-family: 'Cormorant', serif;
+      font-size: clamp(72px, 11vw, 148px);
+      font-weight: 300;
+      line-height: 0.88;
       letter-spacing: -0.02em;
-      max-width: 900px;
+      color: var(--fg);
     }
-
     h1 em {
       font-style: italic;
       color: var(--accent);
     }
 
-    .hero-sub {
-      margin-top: 40px;
+    .hero-logos {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 40px;
+      margin-top: 48px;
     }
-    .hero-sub p {
-      font-size: 15px;
-      color: var(--ink-light);
-      max-width: 380px;
+    .hero-logo {
+      width: auto;
+      opacity: 0.5;
+      transition: opacity 0.2s;
+    }
+    .logo-google { height: 32px; }
+    .logo-mh { height: 44px; }
+    .logo-vice { height: 48px; }
+    .hero-logo:hover { opacity: 0.85; }
+
+    .hero-footer {
+      margin-top: 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-top: 1px solid var(--rule);
+      padding-top: 28px;
+    }
+    .hero-tagline {
+      font-size: 13px;
+      color: var(--fg-dim);
+      max-width: 360px;
       line-height: 1.6;
     }
-    .hero-scroll {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .hero-location {
       font-size: 11px;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--ink-faint);
-      margin-left: auto;
-    }
-    .hero-scroll-line {
-      width: 40px;
-      height: 1px;
-      background: var(--rule);
-    }
-
-    /* ── DIVIDER ── */
-    .rule {
-      border: none;
-      border-top: 1px solid var(--rule);
-      margin: 0 48px;
+      color: var(--fg-faint);
+      text-align: right;
     }
 
     /* ── SECTIONS ── */
     section {
-      padding: 100px 48px;
+      padding: 80px 48px;
+      border-bottom: 1px solid var(--rule);
     }
 
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      gap: 20px;
-      margin-bottom: 64px;
-    }
-    .section-num {
-      font-size: 11px;
-      letter-spacing: 0.2em;
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: var(--ink-faint);
+      color: var(--fg-faint);
+      margin-bottom: 48px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
-    h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(32px, 4vw, 48px);
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      line-height: 1.1;
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+      max-width: 80px;
     }
 
     /* ── ABOUT ── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      max-width: 1100px;
+    .about-body {
+      max-width: 620px;
     }
-    .about-bio p {
-      font-size: 18px;
-      line-height: 1.75;
-      color: var(--ink);
-      margin-bottom: 20px;
+    .about-body p {
+      font-family: 'Cormorant', serif;
+      font-size: clamp(22px, 2.5vw, 30px);
+      font-weight: 300;
+      line-height: 1.5;
+      color: var(--fg);
+      margin-bottom: 24px;
     }
-    .about-bio p strong {
-      font-weight: 500;
+    .about-body p:last-child { margin-bottom: 0; }
+
+    .about-credits {
+      margin-top: 48px;
+      padding-top: 28px;
+      border-top: 1px solid var(--rule);
     }
-    .about-sidebar {
-      padding-top: 8px;
-    }
-    .sidebar-block {
-      margin-bottom: 40px;
-    }
-    .sidebar-label {
+    .credits-label {
       font-size: 10px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--ink-faint);
-      margin-bottom: 12px;
+      color: var(--fg-faint);
+      margin-bottom: 16px;
     }
-    .sidebar-block p, .sidebar-block a {
-      font-size: 15px;
-      color: var(--ink-light);
-      line-height: 1.6;
-      text-decoration: none;
-      display: block;
+    .credits-list {
+      font-size: 13px;
+      color: var(--fg-dim);
     }
-    .sidebar-block a:hover { color: var(--accent); }
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+    .credits-list span::after {
+      content: ' — ';
+      color: var(--fg-faint);
     }
-    .tag {
-      font-size: 12px;
-      letter-spacing: 0.05em;
-      padding: 5px 12px;
-      border: 1px solid var(--rule);
-      color: var(--ink-light);
-      background: transparent;
-    }
+    .credits-list span:last-child::after { content: ''; }
 
     /* ── WORK ── */
-    #work { background: var(--paper-dark); }
-
-    .work-list {
-      max-width: 900px;
-    }
-
     .work-item {
+      padding: 40px 0;
+      border-bottom: 1px solid var(--rule);
       display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 40px;
-      padding: 48px 0;
-      border-top: 1px solid var(--rule);
+      grid-template-columns: 180px 1fr 120px;
+      gap: 32px;
+      align-items: baseline;
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(12px);
       transition: opacity 0.5s ease, transform 0.5s ease;
     }
+    .work-item:first-child { padding-top: 0; }
+    .work-item:last-child { border-bottom: none; padding-bottom: 0; }
     .work-item.visible { opacity: 1; transform: translateY(0); }
-    .work-item:last-child { border-bottom: 1px solid var(--rule); }
 
-    .work-meta { padding-top: 4px; }
-    .work-company {
+    .work-co {
       font-size: 11px;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--ink-faint);
-      margin-bottom: 6px;
+      color: var(--fg-faint);
     }
-    .work-years {
-      font-size: 13px;
-      color: var(--ink-faint);
-      margin-top: 8px;
+    .work-co.google {
+      background: linear-gradient(90deg, #4285F4 0%, #EA4335 25%, #FBBC05 50%, #34A853 75%, #4285F4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-
-    .work-content h3 {
-      font-family: 'Playfair Display', serif;
+    .work-title {
+      font-family: 'Cormorant', serif;
       font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 16px;
+      font-weight: 400;
+      color: var(--fg);
+      margin-bottom: 10px;
       line-height: 1.2;
     }
-    .work-content p {
-      font-size: 15px;
-      color: var(--ink-light);
-      line-height: 1.7;
-      margin-bottom: 16px;
+    .work-desc {
+      font-size: 13px;
+      color: var(--fg-dim);
+      line-height: 1.65;
+      max-width: 540px;
     }
-    .work-stat {
-      display: inline-block;
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 14px;
-      color: var(--accent);
-      border-left: 2px solid var(--accent);
-      padding-left: 14px;
-      margin-top: 4px;
-      line-height: 1.4;
+    .work-years {
+      font-size: 11px;
+      color: var(--fg-faint);
+      text-align: right;
+      letter-spacing: 0.05em;
     }
 
     /* ── CONTACT ── */
-    #contact {
-      text-align: center;
-      padding: 120px 48px;
+    #contact { border-bottom: none; }
+    .contact-heading {
+      font-family: 'Cormorant', serif;
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 300;
+      line-height: 1;
+      margin-bottom: 40px;
+      letter-spacing: -0.01em;
     }
-    #contact h2 {
-      font-size: clamp(40px, 6vw, 80px);
-      margin-bottom: 28px;
-    }
-    #contact p {
-      font-size: 17px;
-      color: var(--ink-light);
-      max-width: 440px;
-      margin: 0 auto 48px;
-    }
-    .contact-link {
-      display: inline-block;
-      font-family: 'Playfair Display', serif;
+    .contact-heading em {
       font-style: italic;
-      font-size: 24px;
-      color: var(--ink);
-      text-decoration: none;
-      border-bottom: 2px solid var(--ink);
-      padding-bottom: 4px;
-      transition: color 0.2s, border-color 0.2s;
+      color: var(--accent);
     }
-    .contact-link:hover { color: var(--accent); border-color: var(--accent); }
-
-    .linkedin-link {
-      display: block;
-      margin-top: 20px;
-      font-size: 13px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .contact-links a {
+      font-size: 14px;
+      color: var(--fg-dim);
       text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 16px;
       transition: color 0.2s;
     }
-    .linkedin-link:hover { color: var(--accent); }
+    .contact-links a:hover { color: var(--accent); }
+    .contact-links a .link-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--fg-faint);
+      width: 80px;
+      flex-shrink: 0;
+      transition: color 0.2s;
+    }
+    .contact-links a:hover .link-label { color: var(--accent); }
 
     /* ── FOOTER ── */
     footer {
-      border-top: 1px solid var(--rule);
       padding: 28px 48px;
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      border-top: 1px solid var(--rule);
     }
     footer p {
-      font-size: 12px;
-      color: var(--ink-faint);
+      font-size: 11px;
+      color: var(--fg-faint);
       letter-spacing: 0.05em;
     }
 
     /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      nav { padding: 20px 24px; }
-      .nav-links { gap: 20px; }
-      .hero { padding: 0 24px 56px; }
-      section { padding: 72px 24px; }
-      .rule { margin: 0 24px; }
-      .about-grid { grid-template-columns: 1fr; gap: 48px; }
-      .work-item { grid-template-columns: 1fr; gap: 12px; }
-      footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
+      nav { padding: 24px; }
+      .hero { padding: 140px 24px 72px; }
+      section { padding: 64px 24px; }
+      .work-item { grid-template-columns: 1fr; gap: 8px; }
+      .work-years { text-align: left; }
+      footer { padding: 24px; flex-direction: column; gap: 8px; }
     }
   </style>
 </head>
@@ -367,7 +321,7 @@
 
   <!-- NAV -->
   <nav id="nav">
-    <a href="#" class="nav-name">Mike Darling</a>
+    <a href="#" class="nav-logo">Mike Darling</a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#work">Work</a></li>
@@ -377,130 +331,96 @@
 
   <!-- HERO -->
   <header class="hero">
-    <p class="hero-issue"><span></span>Editorial Leader &amp; Content Strategist</p>
-    <h1>Mike<br><em>Darling.</em></h1>
-    <div class="hero-sub">
-      <p>11+ years building audiences at Google, Men's Health, and Vice Media. Based in New York.</p>
-      <div class="hero-scroll">
-        <span class="hero-scroll-line"></span>
-        Scroll
-      </div>
+    <p class="hero-eyebrow">Editorial Leader &amp; Content Strategist</p>
+    <h1>Mike<br><em>Darling</em></h1>
+        <div class="hero-logos">
+      <img src="data:image/png;base64,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" alt="Google" class="hero-logo logo-google" />
+      <img src="data:image/png;base64,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" alt="Men's Health" class="hero-logo logo-mh" />
+      <img src="data:image/png;base64,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" alt="Vice" class="hero-logo logo-vice" />
+    </div>
+    <div class="hero-footer">
+      <p class="hero-tagline">11+ years building audiences and telling stories at Google, Men's Health, and Vice Media.</p>
+      <p class="hero-location">New York, NY</p>
     </div>
   </header>
 
-  <hr class="rule" />
-
   <!-- ABOUT -->
   <section id="about">
-    <div class="section-header">
-      <span class="section-num">01</span>
-      <h2>About</h2>
+    <p class="section-label">About</p>
+    <div class="about-body">
+      <p>I'm Mike — an NYC-based editorial leader, content strategist, and writer.</p>
+      <p>At Google, I lead content and SEO strategy across the company's owned editorial channels. At Men's Health, I served as Executive Digital Editor, overseeing the brand's digital operation. At Vice, I helped launch Tonic, the brand's health and wellness vertical.</p>
+      <p>As a writer and editor, I've worked with brands across print, digital, and everything in between.</p>
     </div>
-    <div class="about-grid">
-      <div class="about-bio">
-        <p>I'm Mike — an NYC-based editorial leader, content strategist, and writer with 11+ years building audiences at Google, Men's Health, and Vice Media.</p>
-        <p>At Google, I lead content and SEO strategy across the company's owned editorial channels, including a newsletter with <strong>500K+ subscribers</strong>. At Men's Health, I grew monthly traffic from 12.8M to a record <strong>23M unique visitors</strong>. At Vice, I helped launch Tonic, the brand's health and wellness vertical.</p>
-        <p>As a writer and editor, I've worked with brands including Backpacker, D Magazine, Southwest: The Magazine, and Best Life.</p>
-      </div>
-      <div class="about-sidebar">
-        <div class="sidebar-block">
-          <p class="sidebar-label">Location</p>
-          <p>New York, NY</p>
-        </div>
-        <div class="sidebar-block">
-          <p class="sidebar-label">Currently</p>
-          <p>Audience Development Manager<br>Google Global Comms &amp; Public Affairs</p>
-        </div>
-        <div class="sidebar-block">
-          <p class="sidebar-label">Education</p>
-          <p>B.A., English Writing<br>University of Pittsburgh</p>
-        </div>
-        <div class="sidebar-block">
-          <p class="sidebar-label">Expertise</p>
-          <div class="tags">
-            <span class="tag">Content Strategy</span>
-            <span class="tag">Editorial Leadership</span>
-            <span class="tag">SEO</span>
-            <span class="tag">Audience Growth</span>
-            <span class="tag">Newsletter Strategy</span>
-            <span class="tag">Social Media</span>
-            <span class="tag">Brand Voice</span>
-            <span class="tag">Product Launches</span>
-          </div>
-        </div>
+    <div class="about-credits">
+      <p class="credits-label">Selected Credits</p>
+      <div class="credits-list">
+        <span>Backpacker</span>
+        <span>D Magazine</span>
+        <span>Southwest: The Magazine</span>
+        <span>Best Life</span>
+        <span>Men's Health</span>
+        <span>Vice</span>
       </div>
     </div>
   </section>
-
-  <hr class="rule" />
 
   <!-- WORK -->
   <section id="work">
-    <div class="section-header">
-      <span class="section-num">02</span>
-      <h2>Work History</h2>
+    <p class="section-label">Work History</p>
+
+    <div class="work-item">
+      <p class="work-co google">Google</p>
+      <div>
+        <p class="work-title">Audience Development Manager</p>
+        <p class="work-desc">Lead content strategy for Google's owned-and-operated editorial channels. Manage SEO and product roadmaps for blog.google, oversee reporting infrastructure for in-house social content, and help shape the brand's editorial voice across platforms.</p>
+      </div>
+      <p class="work-years">2022 — Present</p>
     </div>
-    <div class="work-list">
 
-      <div class="work-item">
-        <div class="work-meta">
-          <p class="work-company">Google</p>
-          <p class="work-years">2022 — Present</p>
-        </div>
-        <div class="work-content">
-          <h3>Audience Development Manager</h3>
-          <p>Lead content strategy for all of Google's owned-and-operated editorial channels. Manage the SEO and product roadmaps for blog.google and own the reporting infrastructure and best practices for all in-house original social content.</p>
-          <p>Helped the brand achieve record engagement across IG, TikTok, and X during I/O 2025 with an AI-focused content strategy. Helped launch CommsAI, a new internal platform designed to scale AI tools across the Global Comms org.</p>
-          <span class="work-stat">Grew Google's weekly newsletter to 500K+ subscribers, surpassing YoY goal by 100K+</span>
-        </div>
+    <div class="work-item">
+      <p class="work-co">Men's Health</p>
+      <div>
+        <p class="work-title">Executive Digital Editor</p>
+        <p class="work-desc">Managed 8 direct reports and oversaw 5 verticals as digital lead for Men's Health, the world's largest men's magazine brand. Launched the brand's first digital membership program and several new YouTube franchises.</p>
       </div>
-
-      <div class="work-item">
-        <div class="work-meta">
-          <p class="work-company">Men's Health</p>
-          <p class="work-years">2019 — 2022</p>
-        </div>
-        <div class="work-content">
-          <h3>Executive Digital Editor</h3>
-          <p>Managed 8 direct reports and oversaw 5 verticals as digital lead for Men's Health, the world's largest men's magazine brand. Launched Men's Health MVP, the brand's first digital membership program, and oversaw YouTube franchises that drove +300% YoY growth in views and subscribers.</p>
-          <span class="work-stat">Grew traffic from 12.8M to a record 23M monthly unique visitors</span>
-        </div>
-      </div>
-
-      <div class="work-item">
-        <div class="work-meta">
-          <p class="work-company">Vice Media</p>
-          <p class="work-years">2016 — 2019</p>
-        </div>
-        <div class="work-content">
-          <h3>Managing Editor, Tonic</h3>
-          <p>Hired as part of the launch team for Tonic, Vice Media's millennial and Gen Z-focused health and wellness site. Led the vertical's initial content strategy, managed an edit calendar, and maintained a stable of 40+ freelance writers.</p>
-          <span class="work-stat">Assigned the Merritt Science Journalism Award-winning feature later adapted into a VICE documentary</span>
-        </div>
-      </div>
-
-      <div class="work-item">
-        <div class="work-meta">
-          <p class="work-company">Men's Health</p>
-          <p class="work-years">2013 — 2016</p>
-        </div>
-        <div class="work-content">
-          <h3>Senior Editor</h3>
-          <p>Promoted to senior editor working across both print and digital properties. Assigned, wrote, and top-edited stories across several front-of-book departments.</p>
-        </div>
-      </div>
-
+      <p class="work-years">2019 — 2022</p>
     </div>
+
+    <div class="work-item">
+      <p class="work-co">Vice Media</p>
+      <div>
+        <p class="work-title">Managing Editor, Tonic</p>
+        <p class="work-desc">Hired as part of the launch team for Tonic, Vice's millennial and Gen Z-focused health and wellness site. Led initial content strategy, managed the edit calendar, and maintained a stable of 40+ freelance writers.</p>
+      </div>
+      <p class="work-years">2016 — 2019</p>
+    </div>
+
+    <div class="work-item">
+      <p class="work-co">Men's Health</p>
+      <div>
+        <p class="work-title">Senior Editor</p>
+        <p class="work-desc">Promoted to senior editor working across print and digital properties. Assigned, wrote, and top-edited stories across several front-of-book departments.</p>
+      </div>
+      <p class="work-years">2013 — 2016</p>
+    </div>
+
   </section>
-
-  <hr class="rule" />
 
   <!-- CONTACT -->
   <section id="contact">
-    <h2>Let's <em style="font-family:'Playfair Display',serif; font-style:italic; color:var(--accent);">talk.</em></h2>
-    <p>Whether it's a project, a job, or just a conversation — my inbox is always open.</p>
-    <a class="contact-link" href="mailto:michaelfdarling@gmail.com">michaelfdarling@gmail.com</a>
-    <a class="linkedin-link" href="https://linkedin.com/in/mfdarling" target="_blank">LinkedIn ↗</a>
+    <p class="section-label">Contact</p>
+    <h2 class="contact-heading">Let's<br><em>talk.</em></h2>
+    <div class="contact-links">
+      <a href="mailto:michaelfdarling@gmail.com">
+        <span class="link-label">Email</span>
+        michaelfdarling@gmail.com
+      </a>
+      <a href="https://linkedin.com/in/mfdarling" target="_blank">
+        <span class="link-label">LinkedIn</span>
+        linkedin.com/in/mfdarling
+      </a>
+    </div>
   </section>
 
   <!-- FOOTER -->
@@ -510,21 +430,19 @@
   </footer>
 
   <script>
-    // Nav shadow on scroll
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 60);
+      nav.classList.toggle('scrolled', window.scrollY > 80);
     });
 
-    // Scroll-triggered work items
     const items = document.querySelectorAll('.work-item');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 100);
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.1 });
     items.forEach(item => observer.observe(item));
   </script>
 
