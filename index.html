@@ -13,8 +13,8 @@
       --bg: #111110;
       --bg2: #181816;
       --fg: #e8e4dc;
-      --fg-dim: #8a8680;
-      --fg-faint: #4a4844;
+      --fg-dim: #a8a49c;
+      --fg-faint: #7a7672;
       --accent: #c8a97e;
       --rule: #2a2926;
     }
@@ -66,7 +66,7 @@
       letter-spacing: 0.15em;
       text-transform: uppercase;
       text-decoration: none;
-      color: var(--fg-faint);
+      color: var(--fg-dim);
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--accent); }
@@ -83,7 +83,7 @@
       font-size: 11px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--fg-faint);
+      color: var(--fg-dim);
       margin-bottom: 48px;
     }
 
@@ -108,13 +108,13 @@
     }
     .hero-logo {
       width: auto;
-      opacity: 0.5;
+      opacity: 0.75;
       transition: opacity 0.2s;
     }
-    .logo-google { height: 32px; }
-    .logo-mh { height: 44px; }
-    .logo-vice { height: 48px; }
-    .hero-logo:hover { opacity: 0.85; }
+    .logo-google { height: 44px; }
+    .logo-mh { height: 58px; }
+    .logo-vice { height: 62px; }
+    .hero-logo:hover { opacity: 1; }
 
     .hero-footer {
       margin-top: 64px;
@@ -148,7 +148,7 @@
       font-size: 10px;
       letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: var(--fg-faint);
+      color: var(--fg-dim);
       margin-bottom: 48px;
       display: flex;
       align-items: center;
@@ -206,13 +206,14 @@
       grid-template-columns: 180px 1fr 120px;
       gap: 32px;
       align-items: baseline;
-      opacity: 0;
-      transform: translateY(12px);
+      opacity: 1;
+      transform: translateY(0);
       transition: opacity 0.5s ease, transform 0.5s ease;
     }
     .work-item:first-child { padding-top: 0; }
     .work-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .work-item.visible { opacity: 1; transform: translateY(0); }
+    .work-item.animate { opacity: 0; transform: translateY(12px); }
+    .work-item.animate.visible { opacity: 1; transform: translateY(0); }
 
     .work-co {
       font-size: 11px;
@@ -355,12 +356,12 @@
     <div class="about-credits">
       <p class="credits-label">Selected Credits</p>
       <div class="credits-list">
-        <span>Backpacker</span>
-        <span>D Magazine</span>
-        <span>Southwest: The Magazine</span>
-        <span>Best Life</span>
-        <span>Men's Health</span>
+        <span>Google</span>
         <span>Vice</span>
+        <span>Men's Health</span>
+        <span>Southwest: The Magazine</span>
+        <span>D Magazine</span>
+        <span>Backpacker</span>
       </div>
     </div>
   </section>
@@ -390,7 +391,7 @@
     <div class="work-item">
       <p class="work-co">Vice Media</p>
       <div>
-        <p class="work-title">Managing Editor, Tonic</p>
+        <p class="work-title">Managing Editor</p>
         <p class="work-desc">Hired as part of the launch team for Tonic, Vice's millennial and Gen Z-focused health and wellness site. Led initial content strategy, managed the edit calendar, and maintained a stable of 40+ freelance writers.</p>
       </div>
       <p class="work-years">2016 — 2019</p>
@@ -412,9 +413,9 @@
     <p class="section-label">Contact</p>
     <h2 class="contact-heading">Let's<br><em>talk.</em></h2>
     <div class="contact-links">
-      <a href="mailto:michaelfdarling@gmail.com">
+      <a href="/cdn-cgi/l/email-protection#24494d474c45414842404556484d4a43644349454d480a474b49">
         <span class="link-label">Email</span>
-        michaelfdarling@gmail.com
+        <span class="__cf_email__" data-cfemail="bdd0d4ded5dcd8d1dbd9dccfd1d4d3dafddad0dcd4d193ded2d0">[email&#160;protected]</span>
       </a>
       <a href="https://linkedin.com/in/mfdarling" target="_blank">
         <span class="link-label">LinkedIn</span>
@@ -429,7 +430,7 @@
     <p>New York, NY</p>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 80);
@@ -437,14 +438,4 @@
 
     const items = document.querySelectorAll('.work-item');
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        }
-      });
-    }, { threshold: 0.1 });
-    items.forEach(item => observer.observe(item));
-  </script>
-
-</body>
-</html>
+      entries.forEach(
