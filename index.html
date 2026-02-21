@@ -174,19 +174,15 @@
 
     /* ── ABOUT ── */
     .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 380px;
-      grid-template-areas: "body headshot";
-      gap: 48px;
-      align-items: start;
+      display: block;
     }
     .about-body {
-      grid-area: body;
     }
     .headshot-wrap {
-      grid-area: headshot;
       position: relative;
+      float: right;
       width: 380px;
+      margin: 0 0 24px 48px;
     }
     .headshot {
       width: 100%;
@@ -334,8 +330,7 @@
       .logo-google { height: 28px; }
       .logo-mh { height: 52px; }
       .logo-vice { height: 56px; }
-      .about-grid { display: block; }
-      .headshot-wrap { float: right; width: 140px; margin: 0 0 12px 16px; }
+      .headshot-wrap { width: 140px; margin: 0 0 12px 16px; }
       .work-item { grid-template-columns: 1fr; gap: 6px; }
       .work-years { text-align: left; margin-top: 4px; }
       .work-co { margin-bottom: 4px; }
