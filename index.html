@@ -174,18 +174,19 @@
 
     /* ── ABOUT ── */
     .about-grid {
-      display: flex;
-      flex-direction: row-reverse;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      grid-template-areas: "body headshot";
       gap: 48px;
-      align-items: flex-start;
+      align-items: start;
     }
     .about-body {
-      flex: 1;
+      grid-area: body;
     }
     .headshot-wrap {
+      grid-area: headshot;
       position: relative;
       width: 380px;
-      flex-shrink: 0;
     }
     .headshot {
       width: 100%;
@@ -334,7 +335,7 @@
       .logo-mh { height: 52px; }
       .logo-vice { height: 56px; }
       .about-grid { display: block; }
-      .headshot-wrap { float: right; width: 140px; margin: 0 0 12px 16px; order: unset; }
+      .headshot-wrap { float: right; width: 140px; margin: 0 0 12px 16px; }
       .work-item { grid-template-columns: 1fr; gap: 6px; }
       .work-years { text-align: left; margin-top: 4px; }
       .work-co { margin-bottom: 4px; }
