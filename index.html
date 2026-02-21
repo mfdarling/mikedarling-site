@@ -433,9 +433,9 @@
     <p class="section-label">Contact</p>
     <h2 class="contact-heading">Get in<br><em>touch.</em></h2>
     <div class="contact-links">
-      <a href="javascript:void(0)" class="contact-links-item" id="email-link">
+      <a onclick="window.location='mai'+'lto:michae'+'lfdarling@'+'gmail.com'" style="cursor:pointer;" class="contact-links-item">
         <span class="link-label">Email</span>
-        <span id="email-display">Send me an email</span>
+        Send me an email
       </a>
       <a href="https://linkedin.com/in/mfdarling" target="_blank">
         <span class="link-label">LinkedIn</span>
@@ -451,17 +451,6 @@
   </footer>
 
   <script>
-    // Email assembled at runtime to bypass proxy obfuscation
-    const u = 'michaelfdarling';
-    const d = 'gmail.com';
-    const el = document.getElementById('email-link');
-    if (el) {
-      el.addEventListener('click', function(e) {
-        e.preventDefault();
-        window.location = 'mailto:' + u + '@' + d;
-      });
-    }
-
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 80);
