@@ -451,6 +451,17 @@
   </footer>
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Email assembled at runtime to bypass proxy obfuscation
+    const u = 'michaelfdarling';
+    const d = 'gmail.com';
+    const el = document.getElementById('email-link');
+    if (el) {
+      el.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.location = 'mailto:' + u + '@' + d;
+      });
+    }
+
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 80);
