@@ -262,10 +262,25 @@ body {
 .vice-stack .c-steam { width:64%; height:210px; top:188px;left:5%;  z-index:4; }
 
 /* ─── GOOGLE STACK POSITIONS ─────────────── */
-.google-stack { height: 300px; }
-.google-stack .c-gemini { width:60%; height:195px; top:0;    left:0;    z-index:2; }
-.google-stack .c-lyria  { width:58%; height:185px; top:120px;left:3%;   z-index:3; }
-.google-stack .c-pixel  { width:30%; top:0;        left:58%; z-index:4; aspect-ratio:390/844; height:auto; max-height:290px; }
+.google-stack {
+  position: static;
+  height: auto;
+  display: flex;
+  gap: 12px;
+}
+.google-stack .chip {
+  position: relative;
+  flex: 1;
+  aspect-ratio: 1 / 1;
+  width: auto;
+  height: auto;
+  top: auto;
+  left: auto;
+  max-width: none;
+}
+.google-stack .chip img {
+  object-position: top center;
+}
 
 /* ─── PRINT STACK POSITIONS ──────────────── */
 .print-stack { height: 540px; }
@@ -336,12 +351,7 @@ body {
   .vice-stack .c-head  { width:54%; height:160px; top:90px; left:30%; }
   .vice-stack .c-steam { width:62%; height:180px; top:160px; }
 
-  .google-stack { height: 260px; }
-  .google-stack .c-gemini { width:58%; height:170px; }
-  .google-stack .c-lyria  { width:56%; height:160px; top:100px; }
-  .google-stack .c-pixel  { width:28%; max-height:250px; }
-
-    .print-stack { height: 360px; }
+  .print-stack { height: 360px; }
   .print-stack .c-bl  { width:50%; height:240px; }
   .print-stack .c-cov { width:27%; }
   .print-stack .c-sp  { width:44%; height:225px; top:95px; }
@@ -385,8 +395,8 @@ body {
 <section class="section">
   <div class="section-inner">
     <div class="label-col">
-      <div class="org-role">Content Strategy Lead</div>
-      <div class="org-name">Google /<br>Ink</div>
+      <div class="org-role">Audience Development Editor</div>
+      <div class="org-name">Google</div>
       <div class="org-sub">Editorial Strategy<br>&amp; AI</div>
     </div>
     <div class="content-col">
